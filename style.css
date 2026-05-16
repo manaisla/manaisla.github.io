@@ -92,7 +92,8 @@ body {
   width: clamp(300px, 58vw, 720px);
 }
 
-.hero-photo img {
+.hero-photo img,
+.hero-photo canvas {
   width: 100%;
   height: auto;
   display: block;

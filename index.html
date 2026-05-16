@@ -41,7 +41,7 @@
     <h1 class="hero-name">Mana Muscarsel Isla</h1>
     <div class="hero-lower">
       <div class="hero-photo">
-        <img src="hero.png" alt="Mana Muscarsel Isla" />
+        <canvas id="hero-canvas" width="600" height="553"></canvas>
       </div>
       <nav class="hero-nav">
         <a href="#bio">Bio</a>
@@ -352,14 +352,14 @@
   </main>
 
   <script>
-    // Top bar aparece al scrollear más allá del hero
+    // Top bar
     const topBar = document.getElementById('top-bar');
-    const hero = document.getElementById('home');
+    const heroSection = document.getElementById('home');
     const observer = new IntersectionObserver(
       ([e]) => topBar.classList.toggle('visible', !e.isIntersecting),
       { threshold: 0.1 }
     );
-    observer.observe(hero);
+    observer.observe(heroSection);
 
     // Cycling book covers
     document.querySelectorAll('.book-cover.cycling').forEach(img => {
@@ -375,6 +375,100 @@
         }, 350);
       }, 3500);
     });
+
+    // Hero grain dissolve
+    (function () {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width;
+      const H = canvas.height;
+      const HOLD = 5000;
+      const DURATION = 1400;
+      const FPS_LIMIT = 30;
+      const FRAME_MS = 1000 / FPS_LIMIT;
+      const BG = '#c8e6f5';
+
+      const SOURCES = ['hero-0.png','hero-1.png','hero-2.png','hero-3.png','hero-4.png'];
+      const imgs = SOURCES.map(src => {
+        const img = new Image();
+        img.src = src;
+        return img;
+      });
+
+      function composite(img) {
+        const oc = new OffscreenCanvas(W, H);
+        const oc2 = oc.getContext('2d');
+        oc2.fillStyle = BG;
+        oc2.fillRect(0, 0, W, H);
+        oc2.drawImage(img, 0, 0, W, H);
+        return oc2.getImageData(0, 0, W, H).data;
+      }
+
+      let cache = null;
+      let current = 0;
+      let lastFrame = 0;
+
+      let loaded = 0;
+      imgs.forEach(img => {
+        const onReady = () => {
+          loaded++;
+          if (loaded === imgs.length) init();
+        };
+        img.onload = onReady;
+        img.onerror = onReady;
+      });
+
+      function init() {
+        ctx.fillStyle = BG;
+        ctx.fillRect(0, 0, W, H);
+        ctx.drawImage(imgs[0], 0, 0, W, H);
+        cache = imgs.map(composite);
+        setTimeout(cycle, HOLD);
+      }
+
+      function cycle() {
+        const next = (current + 1) % imgs.length;
+        dissolve(current, next, () => {
+          current = next;
+          setTimeout(cycle, HOLD);
+        });
+      }
+
+      function dissolve(fromIdx, toIdx, onDone) {
+        const pixA = cache[fromIdx];
+        const pixB = cache[toIdx];
+        const N = W * H;
+
+        // Random noise map for this transition
+        const noise = new Float32Array(N);
+        for (let i = 0; i < N; i++) noise[i] = Math.random();
+
+        const result = ctx.createImageData(W, H);
+        const d = result.data;
+        let t0 = null;
+
+        function frame(ts) {
+          if (ts - lastFrame < FRAME_MS) { requestAnimationFrame(frame); return; }
+          lastFrame = ts;
+          if (!t0) t0 = ts;
+          const t = Math.min((ts - t0) / DURATION, 1);
+
+          for (let i = 0, b = 0; b < N * 4; i++, b += 4) {
+            const src = noise[i] < t ? pixB : pixA;
+            d[b]   = src[b];
+            d[b+1] = src[b+1];
+            d[b+2] = src[b+2];
+            d[b+3] = src[b+3];
+          }
+
+          ctx.putImageData(result, 0, 0);
+          if (t < 1) requestAnimationFrame(frame);
+          else onDone && onDone();
+        }
+
+        requestAnimationFrame(frame);
+      }
+    })();
   </script>
 
 </body>
