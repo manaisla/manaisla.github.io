@@ -376,12 +376,13 @@
       }, 3500);
     });
 
-    // Hero grain dissolve
+    // Hero grain dissolve (compositing approach — no getImageData on image-tainted canvases)
     (function () {
       const canvas = document.getElementById('hero-canvas');
       const ctx = canvas.getContext('2d');
       const W = canvas.width;
       const H = canvas.height;
+      const N = W * H;
       const HOLD = 5000;
       const DURATION = 1400;
       const FPS_LIMIT = 30;
@@ -395,25 +396,23 @@
         return img;
       });
 
-      function composite(img) {
-        const oc = new OffscreenCanvas(W, H);
-        const oc2 = oc.getContext('2d');
-        oc2.fillStyle = BG;
-        oc2.fillRect(0, 0, W, H);
-        oc2.drawImage(img, 0, 0, W, H);
-        return oc2.getImageData(0, 0, W, H).data;
+      // Reusable offscreen canvases (never call getImageData on them)
+      function makeOff(w, h) {
+        if (typeof OffscreenCanvas !== 'undefined') return new OffscreenCanvas(w, h);
+        const c = document.createElement('canvas'); c.width = w; c.height = h; return c;
       }
+      const noiseCanvas = makeOff(W, H);
+      const noiseCtx = noiseCanvas.getContext('2d');
+      const maskData = noiseCtx.createImageData(W, H); // programmatic, never tainted
+      const tempCanvas = makeOff(W, H);
+      const tempCtx = tempCanvas.getContext('2d');
 
-      let cache = null;
       let current = 0;
       let lastFrame = 0;
 
       let loaded = 0;
       imgs.forEach(img => {
-        const onReady = () => {
-          loaded++;
-          if (loaded === imgs.length) init();
-        };
+        const onReady = () => { if (++loaded === imgs.length) init(); };
         img.onload = onReady;
         img.onerror = onReady;
       });
@@ -422,29 +421,21 @@
         ctx.fillStyle = BG;
         ctx.fillRect(0, 0, W, H);
         ctx.drawImage(imgs[0], 0, 0, W, H);
-        cache = imgs.map(composite);
         setTimeout(cycle, HOLD);
       }
 
       function cycle() {
         const next = (current + 1) % imgs.length;
-        dissolve(current, next, () => {
+        dissolve(imgs[current], imgs[next], () => {
           current = next;
           setTimeout(cycle, HOLD);
         });
       }
 
-      function dissolve(fromIdx, toIdx, onDone) {
-        const pixA = cache[fromIdx];
-        const pixB = cache[toIdx];
-        const N = W * H;
-
-        // Random noise map for this transition
+      function dissolve(imgA, imgB, onDone) {
+        // Pre-generate noise map once per transition
         const noise = new Float32Array(N);
         for (let i = 0; i < N; i++) noise[i] = Math.random();
-
-        const result = ctx.createImageData(W, H);
-        const d = result.data;
         let t0 = null;
 
         function frame(ts) {
@@ -453,15 +444,28 @@
           if (!t0) t0 = ts;
           const t = Math.min((ts - t0) / DURATION, 1);
 
-          for (let i = 0, b = 0; b < N * 4; i++, b += 4) {
-            const src = noise[i] < t ? pixB : pixA;
-            d[b]   = src[b];
-            d[b+1] = src[b+1];
-            d[b+2] = src[b+2];
-            d[b+3] = src[b+3];
+          // Build grayscale noise mask (programmatic ImageData — no images, no taint)
+          const md = maskData.data;
+          for (let i = 0, b = 0; i < N; i++, b += 4) {
+            const v = noise[i] < t ? 255 : 0;
+            md[b] = md[b+1] = md[b+2] = v;
+            md[b+3] = 255;
           }
+          noiseCtx.putImageData(maskData, 0, 0);
 
-          ctx.putImageData(result, 0, 0);
+          // Composite: temp = imgB masked by noise
+          tempCtx.clearRect(0, 0, W, H);
+          tempCtx.drawImage(imgB, 0, 0, W, H);
+          tempCtx.globalCompositeOperation = 'destination-in';
+          tempCtx.drawImage(noiseCanvas, 0, 0);
+          tempCtx.globalCompositeOperation = 'source-over';
+
+          // Draw imgA then masked imgB on top
+          ctx.fillStyle = BG;
+          ctx.fillRect(0, 0, W, H);
+          ctx.drawImage(imgA, 0, 0, W, H);
+          ctx.drawImage(tempCanvas, 0, 0);
+
           if (t < 1) requestAnimationFrame(frame);
           else onDone && onDone();
         }
