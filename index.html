@@ -31,6 +31,12 @@
 </head>
 <body>
 
+  <!-- Language switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+
   <!-- NAV FIJA (aparece al scrollear) -->
   <div class="top-bar" id="top-bar">
     <a href="#home">Mana Muscarsel Isla</a>
@@ -44,13 +50,14 @@
         <canvas id="hero-canvas" width="600" height="553"></canvas>
       </div>
       <nav class="hero-nav">
-        <a href="#bio">Bio</a>
-        <a href="#musica">Música</a>
-        <a href="#libros">Libros</a>
-        <a href="#notas">Notas</a>
-        <a href="#entrevistas">Entrevistas</a>
-        <a href="#psicologia">Psicología</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#bio" data-i18n="nav.bio">Bio</a>
+        <a href="#musica" data-i18n="nav.music">Música</a>
+        <a href="#videoclips" data-i18n="nav.videos">Videoclips</a>
+        <a href="#libros" data-i18n="nav.books">Libros</a>
+        <a href="#notas" data-i18n="nav.notes">Notas</a>
+        <a href="#entrevistas" data-i18n="nav.interviews">Entrevistas</a>
+        <a href="#psicologia" data-i18n="nav.psychology">Psicología</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </nav>
     </div>
   </section>
@@ -59,8 +66,8 @@
 
     <!-- BIO -->
     <section id="bio">
-      <p class="section-label">Bio</p>
-      <p class="bio-text">
+      <p class="section-label" data-i18n="section.bio">Bio</p>
+      <p class="bio-text" data-i18n-html="bio.text">
         Mana Muscarsel Isla nació en 1987 en Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina.
         Es escritora, performer, compositora y psicóloga especialista en géneros y sexualidades.
         Sus obras han sido publicadas en Argentina, México, España y los Estados Unidos.
@@ -69,35 +76,42 @@
 
     <!-- MÚSICA -->
     <section id="musica">
-      <p class="section-label">Música</p>
+      <p class="section-label" data-i18n="section.music">Música</p>
       <div class="music-list">
 
         <div class="music-item">
-          <img class="music-cover" src="https://cdn-images.dzcdn.net/images/cover/cd4f4fd51a4d579e4d4193b4808c45a5/1000x1000-000000-80-0-0.jpg" alt="Volumen X · Torito" />
+          <img class="music-cover" src="img/music/volumen-x.jpg" alt="Volumen X · Torito" />
           <div class="music-info">
             <h3>Volumen X</h3>
             <p class="meta">Torito · 2024</p>
             <div class="stream-links">
-              <a href="https://open.spotify.com/search/Volumen%20X%20Torito%20Mana%20Isla/albums" target="_blank">Spotify</a>
-              <a href="https://music.youtube.com/watch?v=IIsHBWh9tIg" target="_blank">YouTube Music</a>
+              <a href="https://open.spotify.com/intl-es/album/0XQ3gfkMjSTPDN1modm39c?si=YEauuaEvSoOtrvcbjrCuaw" target="_blank">Spotify</a>
+              <a href="https://music.youtube.com/playlist?list=OLAK5uy_nqQ21egvfa2jXZorCewgrFT7HplDsl9dg&si=Ty-t0UAQUjDrxfv3" target="_blank">YouTube Music</a>
               <a href="https://music.apple.com/us/album/volumen-x/1760034961" target="_blank">Apple Music</a>
               <a href="https://www.deezer.com/album/622570681" target="_blank">Deezer</a>
             </div>
+            <details>
+              <summary data-i18n="music.info">Info</summary>
+              <ul></ul>
+            </details>
           </div>
         </div>
 
         <div class="music-item">
-          <img class="music-cover" src="https://cdn-images.dzcdn.net/images/cover/9fab16723c343259d21f9c269df0b3d6/1000x1000-000000-80-0-0.jpg" alt="El Verano Más Triste" />
+          <img class="music-cover" src="img/music/el-verano-mas-triste.jpg" alt="El Verano Más Triste" />
           <div class="music-info">
             <h3>El Verano Más Triste</h3>
             <p class="meta">Mana Isla · 2020 · Monqui Albino</p>
             <div class="stream-links">
-              <a href="https://open.spotify.com/search/El%20Verano%20M%C3%A1s%20Triste%20Mana%20Isla/albums" target="_blank">Spotify</a>
-              <a href="https://music.youtube.com/watch?v=QGE9PL-m1GI" target="_blank">YouTube Music</a>
-              <a href="https://www.youtube.com/watch?v=YkHGNC65Mao" target="_blank">YouTube</a>
+              <a href="https://open.spotify.com/intl-es/album/3XLwaf8d4yVNFGhkopgpV3?si=sKDHgPb8RnSsA7j2FPnsJg" target="_blank">Spotify</a>
+              <a href="https://music.youtube.com/playlist?list=OLAK5uy_k6o8vHYQ4-YbsN2oo_HBmvGCYoxg6gIRY&si=T2Tz8qi1GYsR_P-l" target="_blank">YouTube Music</a>
               <a href="https://music.apple.com/us/album/el-verano-m%C3%A1s-triste-ep/1637543893" target="_blank">Apple Music</a>
               <a href="https://www.deezer.com/album/343022737" target="_blank">Deezer</a>
             </div>
+            <details>
+              <summary data-i18n="music.info">Info</summary>
+              <ul></ul>
+            </details>
           </div>
         </div>
 
@@ -105,84 +119,127 @@
           <img class="music-cover" src="img/music/un-regalo-de-cuento.jpg" alt="Un Regalo de Cuento" />
           <div class="music-info">
             <h3>Un Regalo de Cuento</h3>
-            <p class="meta">Manada · 2017 · Muchas Nueces</p>
+            <p class="meta">Mana Isla y Santi Adano · 2017 · Muchas Nueces</p>
             <div class="stream-links">
               <a href="https://open.spotify.com/album/1Vay7R9Cwg26vE29cADPrB?dl_branch=1&si=yaFJYb9jQmGTb4xWu1UWcw" target="_blank">Spotify</a>
               <a href="https://music.youtube.com/search?q=Un%20Regalo%20de%20Cuento%20Manada" target="_blank">YouTube Music</a>
               <a href="https://manada.bandcamp.com" target="_blank">Bandcamp</a>
             </div>
+            <details>
+              <summary data-i18n="music.info">Info</summary>
+              <ul>
+                <li><em>"Un regalo de cuento se aleja del relato infantil esperable. No es un camino de la heroína donde lo único que cambia es el género de la protagonista. No es un cuento pedagógico que tiene como enseñanza el hecho de que las nenas pueden hacer lo mismo que los nenes o que explica que está bien tener dos mamás. No son canciones que hablen sobre el amor y sus diversas posibilidades. No es un libro machaconamente feminista ni militantemente lesbiano. Y sin embargo, es todas esas cosas."</em> Laura Arnés</li>
+              </ul>
+            </details>
           </div>
         </div>
 
         <div class="music-item">
-          <img class="music-cover" src="https://f4.bcbits.com/img/a3659003797_2.jpg" alt="La Venganza de Oh Criatura" />
+          <img class="music-cover" src="img/music/la-venganza-de-oh-criatura.jpg" alt="La Venganza de Oh Criatura" />
           <div class="music-info">
             <h3>La Venganza de Oh Criatura</h3>
             <p class="meta">Oh Criatura! · 2016 · Monqui Albino</p>
             <div class="stream-links">
-              <a href="https://open.spotify.com/search/La%20Venganza%20de%20Oh%20Criatura%20Oh%20Criatura%20Mana%20Isla/albums" target="_blank">Spotify</a>
+              <a href="https://open.spotify.com/intl-es/album/6N2UkF6qOoU6g85LICd2vD?si=UGhUdFmkSCC7K3nEXIDNMg" target="_blank">Spotify</a>
               <a href="https://music.youtube.com/search?q=La%20Venganza%20de%20Oh%20Criatura%20Oh%20Criatura%20Mana%20Isla" target="_blank">YouTube Music</a>
               <a href="https://ohcriatura.bandcamp.com/album/la-venganza-de-oh-criatura" target="_blank">Bandcamp</a>
               <a href="https://www.youtube.com/watch?v=7zgblZhNMTo" target="_blank">YouTube</a>
               <a href="https://music.apple.com/us/album/la-venganza-de-oh-criatura/1713300959" target="_blank">Apple Music</a>
               <a href="https://www.deezer.com/album/504516231" target="_blank">Deezer</a>
             </div>
+            <details>
+              <summary data-i18n="music.info">Info</summary>
+              <ul></ul>
+            </details>
           </div>
         </div>
 
         <div class="music-item">
-          <img class="music-cover" src="https://f4.bcbits.com/img/a4167701369_2.jpg" alt="Barrio Chico" />
+          <img class="music-cover" src="img/music/barrio-chico.jpg" alt="Barrio Chico" />
           <div class="music-info">
             <h3>Barrio Chico</h3>
             <p class="meta">Manada · 2015 · Monqui Albino</p>
             <div class="stream-links">
-              <a href="https://open.spotify.com/search/Barrio%20Chico%20Mana%20Isla/albums" target="_blank">Spotify</a>
-              <a href="https://music.youtube.com/search?q=Barrio%20Chico%20Mana%20Isla" target="_blank">YouTube Music</a>
+              <a href="https://open.spotify.com/intl-es/album/4BhDrJ6R4Y02bOt7PAYivv?si=oW4l5ng_QQC3eq7Q5E3teQ" target="_blank">Spotify</a>
+              <a href="https://music.youtube.com/playlist?list=OLAK5uy_lfquXCSNP_vZGs43ROSQtRirQT7HN85Ao&si=WqaKF-bh_Oo505ls" target="_blank">YouTube Music</a>
               <a href="https://manada.bandcamp.com/album/barrio-chico" target="_blank">Bandcamp</a>
-              <a href="https://www.youtube.com/watch?v=e2scUln02kQ" target="_blank">YouTube</a>
+              <a href="https://www.youtube.com/watch?v=JWs1KHKCqpI&list=RDJWs1KHKCqpI&start_radio=1" target="_blank">YouTube</a>
               <a href="https://music.apple.com/ar/album/barrio-chico-ep/1637546863" target="_blank">Apple Music</a>
             </div>
+            <details>
+              <summary data-i18n="music.info">Info</summary>
+              <ul></ul>
+            </details>
           </div>
         </div>
 
         <div class="music-item">
-          <img class="music-cover" src="https://f4.bcbits.com/img/a0746397949_10.jpg" alt="Manada" />
+          <img class="music-cover" src="img/music/manada.jpg" alt="Manada" />
           <div class="music-info">
             <h3>Manada</h3>
             <p class="meta">Manada · 2013</p>
             <div class="stream-links">
-              <a href="https://open.spotify.com/search/Manada%20Mana%20Isla/albums" target="_blank">Spotify</a>
+              <a href="https://open.spotify.com/intl-es/album/7rTiXhbQ2pO9z0a8BkPUCE?si=nExRW2VyT-q2qRSQVV8SPQ" target="_blank">Spotify</a>
               <a href="https://music.youtube.com/search?q=Manada%20Mana%20Isla" target="_blank">YouTube Music</a>
               <a href="https://manada.bandcamp.com/album/manada" target="_blank">Bandcamp</a>
             </div>
+            <details>
+              <summary data-i18n="music.info">Info</summary>
+              <ul></ul>
+            </details>
           </div>
         </div>
 
       </div>
     </section>
 
+    <!-- VIDEOCLIPS -->
+    <section id="videoclips">
+      <p class="section-label" data-i18n="section.videos">Videoclips</p>
+      <div class="video-list">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/GmKt16z2F2A"
+            title="Videoclip"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/j1o5N3oLO0I?start=2"
+            title="Videoclip"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
     <!-- LIBROS -->
     <section id="libros">
-      <p class="section-label">Libros</p>
+      <p class="section-label" data-i18n="section.books">Libros</p>
       <div class="book-list">
 
         <div class="book-item">
           <div class="book-cover-wrap">
             <img
               class="book-cover cycling"
-              data-covers='["img/books/casino-casa-grande.png","https://editorialavenate.com/wp-content/uploads/2025/06/MOCKUP-CASINO-CASA-GRANDE-sin-fondo.png"]'
-              src="img/books/casino-casa-grande.png"
+              data-covers='["img/books/casino-casa-grande.jpg","img/books/casino-casa-grande-espana.webp"]'
+              src="img/books/casino-casa-grande.jpg"
               alt="Casino Casa Grande"
             />
           </div>
           <div class="book-info">
             <h3>Casino Casa Grande</h3>
-            <p class="meta">Narrativa · 2018</p>
-            <p class="synopsis">Bruna navega la vida familiar en los años 90, con la muerte, la hermandad y las máquinas tragamonedas como telón de fondo.</p>
+            <p class="meta"><span data-i18n="genre.fiction">Narrativa</span> · 2018</p>
+            <p class="synopsis" data-i18n-html="book.ccg.synopsis"></p>
             <details>
-              <summary>Ediciones</summary>
+              <summary data-i18n="book.editions">Ediciones</summary>
               <ul>
-                <li>EME Editorial, Argentina, 2018 · <a href="https://www.iberlibro.com/buscar-libro/isbn/9789874685018/" target="_blank">comprar</a></li>
+                <li>EME Editorial, Argentina, 2018 · <a href="https://emeeditorial.com.ar/libro/casino-casa-grande/" target="_blank">comprar</a></li>
                 <li>Editorial Avenate, España, 2025 · <a href="https://editorialavenate.com/tienda/libro-casino-casa-grande/" target="_blank">comprar</a></li>
               </ul>
             </details>
@@ -193,20 +250,20 @@
           <div class="book-cover-wrap">
             <img
               class="book-cover cycling"
-              data-covers='["img/books/ruptura-tapa.jpg","img/books/ruptura-mexico.png","img/books/ruptura-espana.png"]'
+              data-covers='["img/books/ruptura-tapa.jpg","img/books/ruptura-mexico.jpg","img/books/ruptura-espana.jpg"]'
               src="img/books/ruptura-tapa.jpg"
               alt="La Ruptura No Será Televisada"
             />
           </div>
           <div class="book-info">
             <h3>La Ruptura No Será Televisada</h3>
-            <p class="meta">Poesía · 2020</p>
-            <p class="synopsis">Poesía sobre la ruptura, el afecto y la desilusión romántica desde una perspectiva feminista y queer.</p>
+            <p class="meta"><span data-i18n="genre.poetry">Poesía</span> · 2020</p>
+            <p class="synopsis" data-i18n-html="book.ruptura.synopsis"></p>
             <details>
-              <summary>Ediciones</summary>
+              <summary data-i18n="book.editions">Ediciones</summary>
               <ul>
-                <li>Palíndroma, México, 2020</li>
-                <li>Ediciones Liliputienses, España, 2022 · <a href="https://edicionesliliputienses.com" target="_blank">editorial</a></li>
+                <li>Palíndroma, México, 2020 · <a href="https://linktr.ee/_palindroma_?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnrcaoGdA0pc4B0uqDg2-DEXKnY66kQNDT0fs4P4MdemHNwhtVqSc7yAh5ibQ_aem_pYqPt9b9mauBvauX0Bi5fg" target="_blank">comprar</a></li>
+                <li>Ediciones Liliputienses, España, 2022 · <a href="https://www.edicionesliliputienses.com/2022/03/mana-muscarsel-isla-la-ruptura-no-sera.html" target="_blank">comprar</a></li>
               </ul>
             </details>
           </div>
@@ -216,21 +273,21 @@
           <div class="book-cover-wrap">
             <img
               class="book-cover cycling"
-              data-covers='["img/books/la-fiesta-de-las-amigas.png","img/books/la-fiesta-de-las-amigas-mexico.jpg"]'
-              src="img/books/la-fiesta-de-las-amigas.png"
+              data-covers='["img/books/la-fiesta-de-las-amigas.jpg","img/books/la-fiesta-de-las-amigas-mexico.jpg","img/books/la-fiesta-de-las-amigas-españa.jpg"]'
+              src="img/books/la-fiesta-de-las-amigas.jpg"
               alt="La Fiesta de las Amigas"
             />
           </div>
           <div class="book-info">
             <h3>La Fiesta de las Amigas</h3>
-            <p class="meta">Ensayo · 2023</p>
-            <p class="synopsis">Cuestiona el amor romántico heteronormativo y propone la amistad colectiva como alternativa política y afectiva.</p>
+            <p class="meta"><span data-i18n="genre.essay">Ensayo</span> · 2023</p>
+            <p class="synopsis" data-i18n-html="book.fiesta.synopsis"></p>
             <details>
-              <summary>Ediciones</summary>
+              <summary data-i18n="book.editions">Ediciones</summary>
               <ul>
-                <li>Asentamiento Fernseh, Argentina, 2023</li>
-                <li>Palíndroma / Alacraña, México, 2024</li>
-                <li>Continta Me Tienes, España, 2025 · <a href="https://www.contintametienes.com" target="_blank">comprar</a> · <a href="https://amzn.eu/d/fdUuQhm" target="_blank">ebook</a></li>
+                <li>Asentamiento Fernseh, Argentina, 2023 · <a href="https://tienda.lalibre.com.ar/productos/la-fiesta-de-las-amigas-mana-muscarsel-isla/" target="_blank">comprar</a></li>
+                <li>Palíndroma / Alacraña, México, 2024 · <a href="https://linktr.ee/_palindroma_?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnrcaoGdA0pc4B0uqDg2-DEXKnY66kQNDT0fs4P4MdemHNwhtVqSc7yAh5ibQ_aem_pYqPt9b9mauBvauX0Bi5fg" target="_blank">comprar</a></li>
+                <li>Continta Me Tienes, España, 2025 · <a href="https://contintametienes.com/la-fiesta-de-las-amigas/" target="_blank">comprar</a> · <a href="https://amzn.eu/d/fdUuQhm" target="_blank">ebook</a></li>
               </ul>
             </details>
           </div>
@@ -240,18 +297,18 @@
           <div class="book-cover-wrap">
             <img
               class="book-cover"
-              src="https://acdn-us.mitiendanube.com/stores/002/061/671/products/9789878285542-86c06921cb4aa22ef717789012329880-480-0.webp"
+              src="img/books/como-se-que-mi-perro.webp"
               alt="Cómo Sé Que Mi Perro No Se Está Muriendo"
             />
           </div>
           <div class="book-info">
             <h3>Cómo Sé Que Mi Perro No Se Está Muriendo</h3>
-            <p class="meta">Narrativa · 2024</p>
-            <p class="synopsis">Ensayo sobre la experiencia afectiva cotidiana, el cuidado y la incertidumbre.</p>
+            <p class="meta"><span data-i18n="genre.fiction">Narrativa</span> · 2024</p>
+            <p class="synopsis" data-i18n-html="book.perro.synopsis"></p>
             <details>
-              <summary>Ediciones</summary>
+              <summary data-i18n="book.editions">Ediciones</summary>
               <ul>
-                <li>Mandrágora Editora, Argentina, 2024 · <a href="https://tienda-virtual.mandragora.com.ar" target="_blank">comprar AR</a> · <a href="https://www.iberlibro.com/buscar-libro/isbn/9789878285542/" target="_blank">comprar intl</a></li>
+                <li>Mandrágora Editora, Argentina, 2024 · <a href="https://tienda-virtual.mandragora.com.ar/productos/como-se-que-mi-perro-no-se-esta-muriendo/" target="_blank">comprar AR</a> · <a href="https://www.iberlibro.com/buscar-libro/isbn/9789878285542/" target="_blank">comprar intl</a></li>
               </ul>
             </details>
           </div>
@@ -262,7 +319,7 @@
 
     <!-- NOTAS -->
     <section id="notas">
-      <p class="section-label">Notas</p>
+      <p class="section-label" data-i18n="section.notes">Notas</p>
       <div class="article-list">
 
         <a class="article-item" href="https://www.pikaramagazine.com/2025/11/fantasia-nunca-dejare-acabar/" target="_blank">
@@ -281,6 +338,14 @@
           <span class="article-date">2024</span>
         </a>
 
+        <a class="article-item" href="https://latfem.org/melancolia-del-futuro/" target="_blank">
+          <div class="article-text">
+            <span class="article-title">Melancolía del futuro</span>
+            <span class="article-source">Latfem</span>
+          </div>
+          <span class="article-date"></span>
+        </a>
+
         <a class="article-item" href="https://latfem.org/la-existencia-lesbiana-desencantarse-del-deseo/" target="_blank">
           <div class="article-text">
             <span class="article-title">La existencia lesbiana: desencantarse del deseo</span>
@@ -289,12 +354,20 @@
           <span class="article-date">2023</span>
         </a>
 
+        <a class="article-item" href="https://hysteria.mx/de-como-juntar-nuestros-pedazos/" target="_blank">
+          <div class="article-text">
+            <span class="article-title">De cómo juntar nuestros pedazos</span>
+            <span class="article-source">Hysteria</span>
+          </div>
+          <span class="article-date"></span>
+        </a>
+
       </div>
     </section>
 
     <!-- ENTREVISTAS -->
     <section id="entrevistas">
-      <p class="section-label">Entrevistas</p>
+      <p class="section-label" data-i18n="section.interviews">Entrevistas</p>
       <div class="article-list">
 
         <a class="article-item" href="https://www.elsaltodiario.com/lgtbiq/mana-muscarsel-amistad-da-juego-salir-logica-familia-tiene-menos-reglas" target="_blank">
@@ -326,8 +399,8 @@
 
     <!-- PSICOLOGÍA -->
     <section id="psicologia">
-      <p class="section-label">Psicología</p>
-      <p>Psicología y acompañamiento con perspectiva queer y feminista.</p>
+      <p class="section-label" data-i18n="section.psychology">Psicología</p>
+      <p data-i18n="psychology.text">Terapia online desde una perspectiva queer.</p>
       <a class="text-link" href="https://queerpsi.com" target="_blank">queerpsi.com →</a>
     </section>
 
@@ -335,14 +408,14 @@
     <footer id="contacto">
       <div class="footer-inner">
         <div class="footer-col">
-          <p class="footer-label">Contacto</p>
+          <p class="footer-label" data-i18n="footer.contact">Contacto</p>
           <a href="mailto:manaisla@proton.me" class="text-link">manaisla@proton.me</a>
         </div>
         <div class="footer-col">
-          <p class="footer-label">Newsletter</p>
+          <p class="footer-label" data-i18n="footer.newsletter">Newsletter</p>
           <form class="newsletter-form" onsubmit="return false;">
-            <input type="email" placeholder="tu email" required />
-            <button type="submit">Suscribirse</button>
+            <input type="email" placeholder="tu email" data-i18n-placeholder="footer.email" required />
+            <button type="submit" data-i18n="footer.subscribe">Suscribirse</button>
           </form>
         </div>
       </div>
@@ -352,7 +425,111 @@
   </main>
 
   <script>
-    // Top bar
+    // ── Traducciones ──────────────────────────────────────────────────
+    const T = {
+      es: {
+        'nav.bio':        'Bio',
+        'nav.music':      'Música',
+        'nav.videos':     'Videoclips',
+        'nav.books':      'Libros',
+        'nav.notes':      'Notas',
+        'nav.interviews': 'Entrevistas',
+        'nav.psychology': 'Psicología',
+        'nav.contact':    'Contacto',
+        'section.bio':        'Bio',
+        'section.music':      'Música',
+        'section.videos':     'Videoclips',
+        'section.books':      'Libros',
+        'section.notes':      'Notas',
+        'section.interviews': 'Entrevistas',
+        'section.psychology': 'Psicología',
+        'bio.text': 'Mana Muscarsel Isla nació en 1987 en Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina. Es escritora, performer, compositora y psicóloga especialista en géneros y sexualidades. Sus obras han sido publicadas en Argentina, México, España y los Estados Unidos.',
+        'genre.fiction': 'Narrativa',
+        'genre.poetry':  'Poesía',
+        'genre.essay':   'Ensayo',
+        'book.editions': 'Ediciones',
+        'book.ccg.synopsis': `<em>"Si de algo se trata Casino Casa Grande, es del arte como forma de supervivencia: una apuesta a la vitalidad, a la proliferación y a la creación de muchas otras cosas cuando todo indica que impera un páramo"</em> Gabriela Cabezón Cámara<br><br>Esta es una historia sobre hermanas, sobre la muerte, sobre la infancia, sobre una familia argentina en los noventa que se mueve al ritmo de las máquinas tragaperras. Pero no es solo eso. Es la historia de Bruna, una niña que toma las riendas del azar y termina apoderándose del juego, que en vez de pelear por el cuarto propio decide tomar la casa entera e inventarla de nuevo.`,
+        'book.ruptura.synopsis': `<em>"¿Qué pasa cuando una persona (se) rompe? ¿Dónde empieza a rearmarse algo y dónde se transmuta en llanto? Este libro de Mana Muscarsel Isla pone énfasis en la fuerza de los afectos, no solo los amorosos, también explora los de las amigas quienes acompañan y con las que se construye un vínculo "con un montón de trabajo hacia atrás y hacia adelante". Con poemas casi siempre de verso breve, la autora nos asoma a un ritmo contemporáneo que se resiste a la prisa pero también asume su vértigo constante."</em> Yolanda Segura`,
+        'book.fiesta.synopsis': `<em>"Sin excelencias, sin superioridades morales ni políticas, sin antagonismos, sin la retórica de la superación que acaba paralizándonos, sin saltos al vacío, crítica y acogedora, erudita y poética."</em> Itziar Ziga<br><br>Un ensayo que ofrece una crítica al dispositivo amoroso heterociscapitalista en el que la amistad y la fiesta se plantean como alternativas al amor de la pareja, de familia, al matrimonio y a la temporalidad progresista de la reproducción y la acumulación. La amistad lésbica es ocasión para reflexionar sobre mundos colectivos intensos y frágiles que se construyen en tensión y fuga del amor heterosexual. Cuestionar al amor es también en este ensayo una experimentación colectiva y personal con potencialidad para crear y encontrar otros mundos.`,
+        'book.perro.synopsis': `<em>"La muerte de un padre deja huérfanas a una perra y a una hija. La primera se vuelve el animal de la segunda y así se turnan para el ánimo y la tristeza. Ocupan juntas el hueco profundo y doloroso en el que nos deja flotando una ausencia que pareciera no tener remedio. Un par de lentes en un bolsillo, los sueños, una manera de pronunciar la jota, se vuelven símbolos a los que aferrarse para intentar develar un misterio del que apenas podemos susurrar palabras. Y en este esfuerzo la escritura es una compañera noble para esta dupla. Tiende una soga con la cual hacer moños entre el mundo de los vivos y los muertos. Mana nos regala, con un brillo honesto y con una despejada dulzura, la caricia necesaria para el peregrinaje en el que nos inician ciertas heridas que nos hablan, como si avisaran: no voy a sanar nunca."</em> Marie Gouiric`,
+        'music.info': 'Info',
+        'psychology.text': 'Terapia online desde una perspectiva queer.',
+        'footer.contact':   'Contacto',
+        'footer.newsletter':'Newsletter',
+        'footer.email':     'tu email',
+        'footer.subscribe': 'Suscribirse',
+      },
+      en: {
+        'nav.bio':        'Bio',
+        'nav.music':      'Music',
+        'nav.videos':     'Videos',
+        'nav.books':      'Books',
+        'nav.notes':      'Writings',
+        'nav.interviews': 'Interviews',
+        'nav.psychology': 'Psychology',
+        'nav.contact':    'Contact',
+        'section.bio':        'Bio',
+        'section.music':      'Music',
+        'section.videos':     'Videos',
+        'section.books':      'Books',
+        'section.notes':      'Writings',
+        'section.interviews': 'Interviews',
+        'section.psychology': 'Psychology',
+        'bio.text': 'Mana Muscarsel Isla was born in 1987 in Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina. She is a writer, performer, composer and psychologist specializing in gender and sexuality. Her work has been published in Argentina, Mexico, Spain and the United States.',
+        'genre.fiction': 'Fiction',
+        'genre.poetry':  'Poetry',
+        'genre.essay':   'Essay',
+        'book.editions': 'Editions',
+        'book.ccg.synopsis': `<em>"Si de algo se trata Casino Casa Grande, es del arte como forma de supervivencia: una apuesta a la vitalidad, a la proliferación y a la creación de muchas otras cosas cuando todo indica que impera un páramo"</em> Gabriela Cabezón Cámara<br><br>Esta es una historia sobre hermanas, sobre la muerte, sobre la infancia, sobre una familia argentina en los noventa que se mueve al ritmo de las máquinas tragaperras. Pero no es solo eso. Es la historia de Bruna, una niña que toma las riendas del azar y termina apoderándose del juego, que en vez de pelear por el cuarto propio decide tomar la casa entera e inventarla de nuevo.`,
+        'book.ruptura.synopsis': `<em>"¿Qué pasa cuando una persona (se) rompe? ¿Dónde empieza a rearmarse algo y dónde se transmuta en llanto? Este libro de Mana Muscarsel Isla pone énfasis en la fuerza de los afectos, no solo los amorosos, también explora los de las amigas quienes acompañan y con las que se construye un vínculo "con un montón de trabajo hacia atrás y hacia adelante". Con poemas casi siempre de verso breve, la autora nos asoma a un ritmo contemporáneo que se resiste a la prisa pero también asume su vértigo constante."</em> Yolanda Segura`,
+        'book.fiesta.synopsis': `<em>"Sin excelencias, sin superioridades morales ni políticas, sin antagonismos, sin la retórica de la superación que acaba paralizándonos, sin saltos al vacío, crítica y acogedora, erudita y poética."</em> Itziar Ziga<br><br>Un ensayo que ofrece una crítica al dispositivo amoroso heterociscapitalista en el que la amistad y la fiesta se plantean como alternativas al amor de la pareja, de familia, al matrimonio y a la temporalidad progresista de la reproducción y la acumulación. La amistad lésbica es ocasión para reflexionar sobre mundos colectivos intensos y frágiles que se construyen en tensión y fuga del amor heterosexual. Cuestionar al amor es también en este ensayo una experimentación colectiva y personal con potencialidad para crear y encontrar otros mundos.`,
+        'book.perro.synopsis': `<em>"La muerte de un padre deja huérfanas a una perra y a una hija. La primera se vuelve el animal de la segunda y así se turnan para el ánimo y la tristeza. Ocupan juntas el hueco profundo y doloroso en el que nos deja flotando una ausencia que pareciera no tener remedio. Un par de lentes en un bolsillo, los sueños, una manera de pronunciar la jota, se vuelven símbolos a los que aferrarse para intentar develar un misterio del que apenas podemos susurrar palabras. Y en este esfuerzo la escritura es una compañera noble para esta dupla. Tiende una soga con la cual hacer moños entre el mundo de los vivos y los muertos. Mana nos regala, con un brillo honesto y con una despejada dulzura, la caricia necesaria para el peregrinaje en el que nos inician ciertas heridas que nos hablan, como si avisaran: no voy a sanar nunca."</em> Marie Gouiric`,
+        'music.info': 'Info',
+        'psychology.text': 'Online therapy from a queer perspective.',
+        'footer.contact':   'Contact',
+        'footer.newsletter':'Newsletter',
+        'footer.email':     'your email',
+        'footer.subscribe': 'Subscribe',
+      }
+    };
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (T[lang][key] !== undefined) el.placeholder = T[lang][key];
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      try { localStorage.setItem('lang', lang); } catch(e) {}
+    }
+
+    let initLang;
+    try { initLang = localStorage.getItem('lang'); } catch(e) {}
+    if (!initLang) {
+      initLang = (navigator.language || navigator.userLanguage || 'es').startsWith('es') ? 'es' : 'en';
+    }
+    applyLang(initLang);
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+
+    // ── Top bar ───────────────────────────────────────────────────────
     const topBar = document.getElementById('top-bar');
     const heroSection = document.getElementById('home');
     const observer = new IntersectionObserver(
@@ -361,7 +538,7 @@
     );
     observer.observe(heroSection);
 
-    // Cycling book covers
+    // ── Cycling book covers ───────────────────────────────────────────
     document.querySelectorAll('.book-cover.cycling').forEach(img => {
       const covers = JSON.parse(img.dataset.covers);
       if (covers.length < 2) return;
@@ -376,7 +553,7 @@
       }, 3500);
     });
 
-    // Hero grain dissolve (compositing approach — no getImageData on image-tainted canvases)
+    // ── Hero grain dissolve ───────────────────────────────────────────
     (function () {
       const canvas = document.getElementById('hero-canvas');
       const ctx = canvas.getContext('2d');
@@ -389,21 +566,20 @@
       const FRAME_MS = 1000 / FPS_LIMIT;
       const BG = '#c8e6f5';
 
-      const SOURCES = ['img/fotos/foto-2.png','img/fotos/foto-3.png','img/fotos/foto-4.png','img/fotos/foto-1.png'];
+      const SOURCES = ['img/fotos/foto-2.webp','img/fotos/foto-3.webp','img/fotos/foto-4.webp','img/fotos/foto-1.webp'];
       const imgs = SOURCES.map(src => {
         const img = new Image();
         img.src = src;
         return img;
       });
 
-      // Reusable offscreen canvases (never call getImageData on them)
       function makeOff(w, h) {
         if (typeof OffscreenCanvas !== 'undefined') return new OffscreenCanvas(w, h);
         const c = document.createElement('canvas'); c.width = w; c.height = h; return c;
       }
       const noiseCanvas = makeOff(W, H);
       const noiseCtx = noiseCanvas.getContext('2d');
-      const maskData = noiseCtx.createImageData(W, H); // programmatic, never tainted
+      const maskData = noiseCtx.createImageData(W, H);
       const tempCanvas = makeOff(W, H);
       const tempCtx = tempCanvas.getContext('2d');
 
@@ -433,7 +609,6 @@
       }
 
       function dissolve(imgA, imgB, onDone) {
-        // Pre-generate noise map once per transition
         const noise = new Float32Array(N);
         for (let i = 0; i < N; i++) noise[i] = Math.random();
         let t0 = null;
@@ -444,7 +619,6 @@
           if (!t0) t0 = ts;
           const t = Math.min((ts - t0) / DURATION, 1);
 
-          // Build grayscale noise mask (programmatic ImageData — no images, no taint)
           const md = maskData.data;
           for (let i = 0, b = 0; i < N; i++, b += 4) {
             const v = noise[i] < t ? 255 : 0;
@@ -453,14 +627,12 @@
           }
           noiseCtx.putImageData(maskData, 0, 0);
 
-          // Composite: temp = imgB masked by noise
           tempCtx.clearRect(0, 0, W, H);
           tempCtx.drawImage(imgB, 0, 0, W, H);
           tempCtx.globalCompositeOperation = 'destination-in';
           tempCtx.drawImage(noiseCanvas, 0, 0);
           tempCtx.globalCompositeOperation = 'source-over';
 
-          // Draw imgA then masked imgB on top
           ctx.fillStyle = BG;
           ctx.fillRect(0, 0, W, H);
           ctx.drawImage(imgA, 0, 0, W, H);
