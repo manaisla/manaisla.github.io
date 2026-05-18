@@ -484,7 +484,9 @@ footer {
 
 @media (max-width: 640px) {
   .hero {
-    padding: 1.5rem 1.2rem 1.5rem;
+    min-height: auto;
+    padding: 1.5rem 1.2rem 2rem;
+    justify-content: flex-start;
   }
 
   .hero-lower {
@@ -495,8 +497,7 @@ footer {
   }
 
   .hero-photo {
-    width: min(38vw, calc((100vh - 180px) * 1.088));
-    max-width: 180px;
+    width: min(38vw, 180px);
   }
 
   .hero-nav {
