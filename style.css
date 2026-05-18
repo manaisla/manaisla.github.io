@@ -31,6 +31,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   background-color: var(--bg);
+  overflow-x: hidden;
 }
 
 /* ── TOP BAR (oculta, aparece al scrollear) ── */
@@ -411,6 +412,7 @@ details ul li a:hover {
 footer {
   border-top: 1px solid var(--border);
   padding: 3rem 0 2.5rem;
+  padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
   margin-top: 5rem;
 }
 
