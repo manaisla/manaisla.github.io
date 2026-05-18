@@ -89,7 +89,7 @@ body {
 
 .hero-photo {
   flex: 0 0 auto;
-  width: clamp(300px, 58vw, 720px);
+  width: clamp(240px, 44vw, 560px);
 }
 
 .hero-photo img,
