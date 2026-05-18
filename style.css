@@ -136,6 +136,10 @@ body {
   display: block;
 }
 
+#hero-canvas {
+  filter: blur(0.6px);
+}
+
 
 .hero-nav {
   display: flex;
@@ -178,13 +182,14 @@ section:last-of-type {
 }
 
 .section-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
+  font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--text);
   border-top: 1px solid var(--border);
   padding-top: 0.7rem;
   margin-bottom: 2.5rem;
+  line-height: 1.3;
 }
 
 /* ── BIO ── */
@@ -308,6 +313,40 @@ section:last-of-type {
   color: var(--muted);
   line-height: 1.55;
   margin-bottom: 0.6rem;
+}
+
+.synopsis.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.synopsis-toggle {
+  font-family: var(--font);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.synopsis-toggle:hover {
+  color: var(--text);
+}
+
+.synopsis-cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+  margin-bottom: 0.45rem;
 }
 
 /* ── STREAMING LINKS ── */
