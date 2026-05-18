@@ -623,75 +623,6 @@
 
       let current = 0;
       let lastFrame = 0;
-      let processedImgs = [];
-
-      function processNewsprint(img) {
-        const oc = makeOff(W, H);
-        const oc2 = oc.getContext('2d');
-
-        oc2.drawImage(img, 0, 0, W, H);
-
-        const id = oc2.getImageData(0, 0, W, H);
-        const d = id.data;
-
-        for (let i = 0; i < d.length; i += 4) {
-          const r = d[i], g = d[i + 1], b = d[i + 2];
-          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
-          let nr = gray * 0.90 + 26;
-          let ng = gray * 0.82 + 18;
-          let nb = gray * 0.68 + 12;
-          const gn = (Math.random() - 0.5) * 36;
-          nr = Math.min(255, Math.max(0, nr + gn));
-          ng = Math.min(255, Math.max(0, ng + gn));
-          nb = Math.min(255, Math.max(0, nb + gn));
-          nr = Math.min(255, Math.max(0, (nr - 128) * 1.2 + 128));
-          ng = Math.min(255, Math.max(0, (ng - 128) * 1.2 + 128));
-          nb = Math.min(255, Math.max(0, (nb - 128) * 1.2 + 128));
-          d[i] = nr; d[i + 1] = ng; d[i + 2] = nb;
-        }
-        oc2.putImageData(id, 0, 0);
-
-        // Tono papel amarillento
-        oc2.fillStyle = 'rgba(210, 185, 110, 0.14)';
-        oc2.fillRect(0, 0, W, H);
-
-        // Viñeta borde desgastado
-        const vg = oc2.createRadialGradient(W / 2, H / 2, H * 0.18, W / 2, H / 2, H * 0.92);
-        vg.addColorStop(0, 'rgba(0,0,0,0)');
-        vg.addColorStop(1, 'rgba(0,0,0,0.40)');
-        oc2.fillStyle = vg;
-        oc2.fillRect(0, 0, W, H);
-
-        // Pliegue vertical — sombra izquierda
-        const vl = oc2.createLinearGradient(W * 0.44, 0, W * 0.502, 0);
-        vl.addColorStop(0, 'rgba(0,0,0,0)');
-        vl.addColorStop(1, 'rgba(0,0,0,0.16)');
-        oc2.fillStyle = vl;
-        oc2.fillRect(W * 0.44, 0, W * 0.062, H);
-
-        // Pliegue vertical — reflejo derecho
-        const vr = oc2.createLinearGradient(W * 0.502, 0, W * 0.56, 0);
-        vr.addColorStop(0, 'rgba(255,255,255,0.10)');
-        vr.addColorStop(1, 'rgba(0,0,0,0)');
-        oc2.fillStyle = vr;
-        oc2.fillRect(W * 0.502, 0, W * 0.058, H);
-
-        // Pliegue horizontal — sombra superior
-        const ht = oc2.createLinearGradient(0, H * 0.44, 0, H * 0.502);
-        ht.addColorStop(0, 'rgba(0,0,0,0)');
-        ht.addColorStop(1, 'rgba(0,0,0,0.13)');
-        oc2.fillStyle = ht;
-        oc2.fillRect(0, H * 0.44, W, H * 0.062);
-
-        // Pliegue horizontal — reflejo inferior
-        const hb = oc2.createLinearGradient(0, H * 0.502, 0, H * 0.56);
-        hb.addColorStop(0, 'rgba(255,255,255,0.08)');
-        hb.addColorStop(1, 'rgba(0,0,0,0)');
-        oc2.fillStyle = hb;
-        oc2.fillRect(0, H * 0.502, W, H * 0.058);
-
-        return oc;
-      }
 
       let loaded = 0;
       imgs.forEach(img => {
@@ -701,16 +632,15 @@
       });
 
       function init() {
-        processedImgs = imgs.map(img => processNewsprint(img));
         ctx.fillStyle = BG;
         ctx.fillRect(0, 0, W, H);
-        ctx.drawImage(processedImgs[0], 0, 0, W, H);
+        ctx.drawImage(imgs[0], 0, 0, W, H);
         setTimeout(cycle, HOLD);
       }
 
       function cycle() {
-        const next = (current + 1) % processedImgs.length;
-        dissolve(processedImgs[current], processedImgs[next], () => {
+        const next = (current + 1) % imgs.length;
+        dissolve(imgs[current], imgs[next], () => {
           current = next;
           setTimeout(cycle, HOLD);
         });
