@@ -89,7 +89,8 @@ body {
 
 .hero-photo {
   flex: 0 0 auto;
-  width: clamp(240px, 44vw, 560px);
+  /* Constrained por ancho Y por alto disponible (100vh - nombre - padding - márgenes) */
+  width: min(clamp(180px, 38vw, 440px), calc((100vh - 260px) * 1.088));
 }
 
 .hero-photo img,
@@ -483,26 +484,27 @@ footer {
 
 @media (max-width: 640px) {
   .hero {
-    padding: 1.8rem 1.4rem 2rem;
+    padding: 1.5rem 1.2rem 1.5rem;
   }
 
   .hero-lower {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
 
   .hero-photo {
-    width: 55vw;
-    max-width: 220px;
+    width: min(38vw, calc((100vh - 180px) * 1.088));
+    max-width: 180px;
   }
 
   .hero-nav {
-    align-items: flex-start;
+    align-items: flex-end;
   }
 
   .hero-nav a {
-    font-size: 1.2rem;
+    font-size: clamp(0.85rem, 3.8vw, 1.1rem);
   }
 
   main {
