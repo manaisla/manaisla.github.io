@@ -305,11 +305,15 @@ section:last-of-type {
   margin-bottom: 0.5rem;
 }
 
+.synopsis-wrap {
+  position: relative;
+  margin-bottom: 0.6rem;
+}
+
 .synopsis {
   font-size: 0.85rem;
   color: var(--muted);
   line-height: 1.55;
-  margin-bottom: 0.6rem;
 }
 
 .synopsis.collapsed {
@@ -327,10 +331,21 @@ section:last-of-type {
   border: none;
   cursor: pointer;
   padding: 0;
-  display: block;
-  margin-bottom: 0.5rem;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.synopsis-wrap.is-collapsed .synopsis-toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, transparent, var(--bg) 30%);
+  padding-left: 3em;
+}
+
+.synopsis-wrap:not(.is-collapsed) .synopsis-toggle {
+  display: block;
+  margin-top: 0.3rem;
 }
 
 .synopsis-toggle:hover {
