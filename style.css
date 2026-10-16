@@ -682,3 +682,25 @@ footer {
   font-size: 0.75rem;
   line-height: 1;
 }
+
+.ium-player {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.ium-cover {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+@media (max-width: 640px) {
+  .ium-cover {
+    width: 160px;
+    height: 160px;
+  }
+}

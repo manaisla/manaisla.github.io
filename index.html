@@ -67,7 +67,7 @@
         <a href="#videoclips" data-i18n="nav.videos">Videoclips</a>
         <a href="#entrevistas" data-i18n="nav.interviews">Entrevistas</a>
         <a href="#notas" data-i18n="nav.notes">Notas</a>
-        <a href="#imagina" data-i18n="nav.imagina">Proyecto Imagina un mundo</a>
+        <a href="#imagina" data-i18n="nav.imagina">I.U.M</a>
         <a href="#psicologia" data-i18n="nav.psychology">Psicología</a>
         <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </nav>
@@ -411,11 +411,14 @@
 
     <!-- PROYECTO IMAGINA UN MUNDO -->
     <section id="imagina">
-      <p class="section-label" data-i18n="section.imagina">Proyecto Imagina un mundo</p>
-      <button class="audio-play-btn" id="audio-play-btn" data-src="audio/proyecto-imagina-un-mundo.mp3">
-        <span class="audio-play-icon">▶</span>
-        <span class="audio-play-label" data-i18n="audio.play">Escuchar</span>
-      </button>
+      <p class="section-label" data-i18n="section.imagina">Imagina un. mundo.</p>
+      <div class="ium-player">
+        <img class="ium-cover" src="img/ium-cover.webp" alt="Imagina un mundo — Mana Muscarsel Isla" />
+        <button class="audio-play-btn" id="audio-play-btn" data-src="audio/proyecto-imagina-un-mundo.mp3">
+          <span class="audio-play-icon">▶</span>
+          <span class="audio-play-label">I.U.M</span>
+        </button>
+      </div>
     </section>
 
     <!-- PSICOLOGÍA -->
@@ -452,7 +455,7 @@
         'nav.videos':     'Videoclips',
         'nav.books':      'Libros',
         'nav.notes':      'Notas',
-        'nav.imagina':    'Proyecto Imagina un mundo',
+        'nav.imagina':    'I.U.M',
         'nav.interviews': 'Entrevistas',
         'nav.psychology': 'Psicología',
         'nav.contact':    'Contacto',
@@ -461,7 +464,7 @@
         'section.videos':     'Videoclips',
         'section.books':      'Libros',
         'section.notes':      'Notas',
-        'section.imagina':    'Proyecto Imagina un mundo',
+        'section.imagina':    'Imagina un. mundo.',
         'section.interviews': 'Entrevistas',
         'section.psychology': 'Psicología',
         'bio.text': 'Mana Muscarsel Isla nació en 1987 en Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina. Es escritora, performer, compositora y psicóloga especialista en géneros y sexualidades. Sus obras han sido publicadas en Argentina, México, España y los Estados Unidos.',
@@ -490,7 +493,7 @@
         'nav.videos':     'Videos',
         'nav.books':      'Books',
         'nav.notes':      'Writings',
-        'nav.imagina':    'Proyecto Imagina un mundo',
+        'nav.imagina':    'I.U.M',
         'nav.interviews': 'Interviews',
         'nav.psychology': 'Psychology',
         'nav.contact':    'Contact',
@@ -499,7 +502,7 @@
         'section.videos':     'Videos',
         'section.books':      'Books',
         'section.notes':      'Writings',
-        'section.imagina':    'Proyecto Imagina un mundo',
+        'section.imagina':    'Imagina un. mundo.',
         'section.interviews': 'Interviews',
         'section.psychology': 'Psychology',
         'bio.text': 'Mana Muscarsel Isla was born in 1987 in Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina. They are a writer, performer, composer and psychologist specializing in gender and sexuality. Their work has been published in Argentina, Mexico, Spain and the United States.',
@@ -638,16 +641,13 @@
         const label = btn.querySelector('.audio-play-label');
         if (audio.paused) {
           audio.play();
-          icon.textContent  = '⏸';
-          label.textContent = T[currentLang]['audio.pause'];
+          icon.textContent = '⏸';
         } else {
           audio.pause();
-          icon.textContent  = '▶';
-          label.textContent = T[currentLang]['audio.play'];
+          icon.textContent = '▶';
         }
         audio.onended = function () {
-          icon.textContent  = '▶';
-          label.textContent = T[currentLang]['audio.play'];
+          icon.textContent = '▶';
         };
       });
     })();
