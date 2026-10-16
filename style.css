@@ -655,3 +655,30 @@ footer {
     width: 150px;
   }
 }
+
+/* ── PROYECTO IMAGINA UN MUNDO – AUDIO BUTTON ── */
+
+.audio-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: none;
+  border: 1px solid var(--border);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.6rem 1.1rem;
+  transition: background 0.15s, opacity 0.15s;
+  border-radius: 0;
+}
+
+.audio-play-btn:hover {
+  background: var(--bg-dark);
+}
+
+.audio-play-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+}

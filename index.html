@@ -67,6 +67,7 @@
         <a href="#videoclips" data-i18n="nav.videos">Videoclips</a>
         <a href="#entrevistas" data-i18n="nav.interviews">Entrevistas</a>
         <a href="#notas" data-i18n="nav.notes">Notas</a>
+        <a href="#imagina" data-i18n="nav.imagina">Proyecto Imagina un mundo</a>
         <a href="#psicologia" data-i18n="nav.psychology">Psicología</a>
         <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </nav>
@@ -408,6 +409,15 @@
       </div>
     </section>
 
+    <!-- PROYECTO IMAGINA UN MUNDO -->
+    <section id="imagina">
+      <p class="section-label" data-i18n="section.imagina">Proyecto Imagina un mundo</p>
+      <button class="audio-play-btn" id="audio-play-btn" data-src="audio/proyecto-imagina-un-mundo.mp3">
+        <span class="audio-play-icon">▶</span>
+        <span class="audio-play-label" data-i18n="audio.play">Escuchar</span>
+      </button>
+    </section>
+
     <!-- PSICOLOGÍA -->
     <section id="psicologia">
       <p class="section-label" data-i18n="section.psychology">Psicología</p>
@@ -442,6 +452,7 @@
         'nav.videos':     'Videoclips',
         'nav.books':      'Libros',
         'nav.notes':      'Notas',
+        'nav.imagina':    'Proyecto Imagina un mundo',
         'nav.interviews': 'Entrevistas',
         'nav.psychology': 'Psicología',
         'nav.contact':    'Contacto',
@@ -450,6 +461,7 @@
         'section.videos':     'Videoclips',
         'section.books':      'Libros',
         'section.notes':      'Notas',
+        'section.imagina':    'Proyecto Imagina un mundo',
         'section.interviews': 'Entrevistas',
         'section.psychology': 'Psicología',
         'bio.text': 'Mana Muscarsel Isla nació en 1987 en Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina. Es escritora, performer, compositora y psicóloga especialista en géneros y sexualidades. Sus obras han sido publicadas en Argentina, México, España y los Estados Unidos.',
@@ -465,6 +477,8 @@
         'synopsis.more': 'Ver más',
         'synopsis.less': 'Ver menos',
         'psychology.text': 'Terapia online desde una perspectiva queer.',
+        'audio.play':  'Escuchar',
+        'audio.pause': 'Pausar',
         'footer.contact':   'Contacto',
         'footer.newsletter':'Newsletter',
         'footer.email':     'tu email',
@@ -476,6 +490,7 @@
         'nav.videos':     'Videos',
         'nav.books':      'Books',
         'nav.notes':      'Writings',
+        'nav.imagina':    'Proyecto Imagina un mundo',
         'nav.interviews': 'Interviews',
         'nav.psychology': 'Psychology',
         'nav.contact':    'Contact',
@@ -484,6 +499,7 @@
         'section.videos':     'Videos',
         'section.books':      'Books',
         'section.notes':      'Writings',
+        'section.imagina':    'Proyecto Imagina un mundo',
         'section.interviews': 'Interviews',
         'section.psychology': 'Psychology',
         'bio.text': 'Mana Muscarsel Isla was born in 1987 in Fiske Menuco (<s>General Roca</s>), Patagonia, Argentina. They are a writer, performer, composer and psychologist specializing in gender and sexuality. Their work has been published in Argentina, Mexico, Spain and the United States.',
@@ -499,6 +515,8 @@
         'synopsis.more': 'Read more',
         'synopsis.less': 'Read less',
         'psychology.text': 'Online therapy from a queer perspective.',
+        'audio.play':  'Listen',
+        'audio.pause': 'Pause',
         'footer.contact':   'Contact',
         'footer.newsletter':'Newsletter',
         'footer.email':     'your email',
@@ -608,6 +626,31 @@
         }, 350);
       }, 3500);
     });
+
+    // ── Proyecto Imagina un mundo – audio player ─────────────────────
+    (function () {
+      const btn = document.getElementById('audio-play-btn');
+      if (!btn) return;
+      let audio = null;
+      btn.addEventListener('click', function () {
+        if (!audio) audio = new Audio(btn.dataset.src);
+        const icon  = btn.querySelector('.audio-play-icon');
+        const label = btn.querySelector('.audio-play-label');
+        if (audio.paused) {
+          audio.play();
+          icon.textContent  = '⏸';
+          label.textContent = T[currentLang]['audio.pause'];
+        } else {
+          audio.pause();
+          icon.textContent  = '▶';
+          label.textContent = T[currentLang]['audio.play'];
+        }
+        audio.onended = function () {
+          icon.textContent  = '▶';
+          label.textContent = T[currentLang]['audio.play'];
+        };
+      });
+    })();
 
     // ── Hero grain dissolve con efecto papel de diario ────────────────
     (function () {
