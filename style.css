@@ -687,12 +687,12 @@ footer {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .ium-cover {
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   display: block;
   border-radius: 50%;
@@ -702,17 +702,20 @@ footer {
 .ium-info {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  max-width: 520px;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .ium-description {
   white-space: pre-wrap;
-  line-height: 1.6;
+  font-size: 0.82rem;
+  line-height: 1.65;
   margin: 0;
+  opacity: 0.85;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .ium-player {
     flex-direction: column;
   }
@@ -720,5 +723,9 @@ footer {
   .ium-cover {
     width: 160px;
     height: 160px;
+  }
+
+  .ium-description {
+    font-size: 0.85rem;
   }
 }
