@@ -685,9 +685,9 @@ footer {
 
 .ium-player {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
-  gap: 1.2rem;
+  gap: 2rem;
 }
 
 .ium-cover {
@@ -696,9 +696,27 @@ footer {
   object-fit: cover;
   display: block;
   border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ium-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 520px;
+}
+
+.ium-description {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  margin: 0;
 }
 
 @media (max-width: 640px) {
+  .ium-player {
+    flex-direction: column;
+  }
+
   .ium-cover {
     width: 160px;
     height: 160px;
