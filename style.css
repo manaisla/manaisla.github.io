@@ -270,6 +270,11 @@ section:last-of-type {
   transition: opacity 0.35s ease;
 }
 
+.book-cover.square {
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
 .no-cover-box {
   width: 90px;
   height: 130px;
@@ -645,6 +650,7 @@ footer {
   .book-cover-wrap { width: 70px; }
   .book-cover,
   .no-cover-box { width: 70px; height: 100px; }
+  .book-cover.square { height: auto; }
 
   .footer-inner {
     flex-direction: column;
